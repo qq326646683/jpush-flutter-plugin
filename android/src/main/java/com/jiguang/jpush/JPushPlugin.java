@@ -64,6 +64,11 @@ public class JPushPlugin implements MethodCallHandler {
             result.success("Android " + android.os.Build.VERSION.RELEASE);
         } else if (call.method.equals("setup")) {
             setup(call, result);
+            BasicPushNotificationBuilder builder = new BasicPushNotificationBuilder(registrar.context());
+            builder.statusBarDrawable = registrar.context().getResources().getIdentifier("push_icon", "drawable", registrar.context().getPackageName());
+            builder.notificationFlags = Notification.FLAG_AUTO_CANCEL;  //设置为点击后自动消失
+            builder.notificationDefaults = Notification.DEFAULT_SOUND;  //设置为铃声（ Notification.DEFAULT_SOUND）或者震动（ Notification.DEFAULT_VIBRATE）
+            JPushInterface.setDefaultPushNotificationBuilder(builder);
         } else if (call.method.equals("setTags")) {
             setTags(call, result);
         } else if (call.method.equals("cleanTags")) {
