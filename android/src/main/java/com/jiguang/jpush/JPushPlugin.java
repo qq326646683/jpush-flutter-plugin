@@ -23,6 +23,8 @@ import java.util.Map;
 import java.util.Set;
 
 import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.BasicPushNotificationBuilder;
+import android.app.Notification;
 
 /** JPushPlugin */
 public class JPushPlugin implements MethodCallHandler {
