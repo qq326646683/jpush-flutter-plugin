@@ -130,7 +130,8 @@ public class JPushPlugin implements MethodCallHandler {
         boolean ridAvailable = rid != null && !rid.isEmpty();
         if (ridAvailable && dartIsReady) {
             // try to schedule get rid cache
-            for (Result res: JPushPlugin.instance.getRidCache) {
+            for (int i = JPushPlugin.instance.getRidCache.size() - 1; i >= 0; i--) {
+                Result res = JPushPlugin.instance.getRidCache.get(i);
                 res.success(rid);
                 JPushPlugin.instance.getRidCache.remove(res);
             }
